@@ -16,7 +16,7 @@ async function indexingFunction() {
     chunkOverlap: 0,
   });
   const splitDocs = await splitter.splitDocuments(docs);
-
+  //step 3: Create embeddings and store them in Qdrant vector store.
   const embeddings = new OpenAIEmbeddings({
     model: "text-embedding-3-small",
   });
@@ -29,10 +29,7 @@ async function indexingFunction() {
       collectionName: "embedding-collection",
     }
   );
-
-  //   const vectorStore = await QdrantVectorStore.fromExistingCollection(embeddings, {
-  //   url: process.env.QDRANT_URL,
-  //   collectionName: "langchainjs-testing",
-  // });
+  // indexing complete
+  console.log("Indexing Complete");
 }
 indexingFunction();
